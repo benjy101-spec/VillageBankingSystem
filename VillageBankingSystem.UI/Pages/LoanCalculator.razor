@@ -1,0 +1,31 @@
+@page "/loancalculator"
+@using MudBlazor
+@using MudBlazor.Components
+
+<MudPaper Class="pa-6" Elevation="8" Style="border-radius: 12px;">
+    <MudText Typo="Typo.h4" Class="mb-6" Color="Color.Primary">Loan Calculator</MudText>
+
+    <MudTable Items="_loanRecords" Hover="true" Bordered="true" Striped="true" Dense="true" Elevation="4" Style="border-radius: 8px;">
+        <HeaderContent>
+            <MudTh>Member</MudTh>
+            @if (_loanRecords.Count > 0)
+            {
+                @foreach (var month in _loanRecords[0].MonthlyData)
+                {
+                    <MudTh>@month.Principal.ToString("C")</MudTh>
+                }
+            }
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.MemberName</MudTd>
+            @foreach (var monthData in context.MonthlyData)
+            {
+                <MudTd>
+                    <div>Principal: @monthData.Principal.ToString("C")</div>
+                    <div>Payment: @monthData.Payment.ToString("C")</div>
+                    <div>Interest: @monthData.Interest.ToString("C")</div>
+                </MudTd>
+            }
+        </RowTemplate>
+    </MudTable>
+</MudPaper>

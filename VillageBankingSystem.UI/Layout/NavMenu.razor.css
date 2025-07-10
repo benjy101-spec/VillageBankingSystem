@@ -1,0 +1,77 @@
+/* NavMenu.razor.css - Enhanced navigation menu styles */
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #2c3e50;
+  height: 100%;
+  width: 250px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ecf0f1;
+}
+
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1rem;
+  border-left: 4px solid transparent;
+  transition: background-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  background-color:  #1f5c79;
+  border-left-color: #1abc9c;
+  color: #1abc9c;
+}
+
+.nav-menu a.active {
+  background-color:  #1f5c79;
+  border-left-color: #16a085;
+  color: white;
+  font-weight: 600;
+}
+
+.nav-menu a .icon {
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+
+.nav-menu .nav-header {
+  padding: 16px 20px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-color: #1a252f;
+  border-bottom: 1px solid #34495e;
+  user-select: none;
+}
+
+.nav-menu .nav-footer {
+  margin-top: auto;
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  color: #95a5a6;
+  border-top: 1px solid #34495e;
+  user-select: none;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-menu {
+    width: 200px;
+  }
+  .nav-menu a {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+  .nav-menu a .icon {
+    font-size: 1rem;
+    margin-right: 8px;
+  }
+}

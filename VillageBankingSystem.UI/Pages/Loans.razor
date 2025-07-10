@@ -1,0 +1,98 @@
+@page "/loans"
+@using MudBlazor
+@using MudBlazor.Components
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+
+    <MudGrid AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-4">
+        <MudItem>
+            <h3>Loans Management</h3>
+        </MudItem>
+        <MudItem>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="OpenIssueLoanDialog" StartIcon="@Icons.Material.Filled.Add">
+                Issue Loan
+            </MudButton>
+        </MudItem>
+    </MudGrid>
+
+    <MudDialog @bind-Open="_dialogOpen" MaxWidth="MaxWidth.Small" FullWidth="true" AriaLabel="Issue Loan Dialog">
+        <DialogContent>
+            <MudGrid Spacing="3">
+                <MudItem xs="12">
+                    <MudSelect T="string" Label="Select Member" @bind-Value="_selectedMember" Dense="true" Required="true" HelperText="Select a member to issue loan" Style="width: 100%;">
+                        @foreach (var member in _eligibleMembers)
+                        {
+                            <MudSelectItem T="string" Value="@member.Name">@member.Name</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField T="decimal" Label="Loan Amount" @bind-Value="_loanAmount" Required="true" HelperText="Enter loan amount greater than zero" Style="width: 100%;" />
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+        <DialogActions>
+            <MudButton Color="Color.Primary" OnClick="ConfirmIssueLoan" Disabled="@(!_canIssueLoan || _isProcessing)" StartIcon="@Icons.Material.Filled.Check">
+                Issue
+            </MudButton>
+            <MudButton Color="Color.Secondary" OnClick="CloseIssueLoanDialog" StartIcon="@Icons.Material.Filled.Close">
+                Cancel
+            </MudButton>
+        </DialogActions>
+    </MudDialog>
+
+    <MudTabs>
+        <MudTabPanel Text="Issue Loan">
+            <div style="max-height: 400px; overflow-y: auto;">
+                <MudTable Items="_loans" Hover="true" Bordered="true" Striped="true" Dense="true" Class="mt-4" FixedHeader="true" Height="400px" AriaLabel="Loans Table">
+                    <HeaderContent>
+                        <MudTh>Member</MudTh>
+                        <MudTh>Principal</MudTh>
+                        @foreach (var month in _months)
+                        {
+                            <MudTh colSpan="3" align="Center" Title="@($"Month: {month}")">@month</MudTh>
+                        }
+                    </HeaderContent>
+                    <HeaderContent>
+                        <MudTh></MudTh>
+                        <MudTh></MudTh>
+                        @foreach (var month in _months)
+                        {
+                            <MudTh Title="Balance brought forward">Balance bf</MudTh>
+                            <MudTh Title="Current month balance">Current</MudTh>
+                            <MudTh Title="Total balance">Total</MudTh>
+                        }
+                    </HeaderContent>
+                    <RowTemplate>
+                        <MudTd Title="Member Name">@context.Member</MudTd>
+                        <MudTd Title="Principal Amount" Style="@GetPrincipalStyle(context)">@context.Principal.ToString("C")</MudTd>
+                        @{
+                            var balances = GetMonthlyBalances(context);
+                        }
+                        @for (int i = 0; i < _months.Count; i++)
+                        {
+                            <MudTd Title="Balance brought forward">@balances[i].BalanceBf.ToString("C")</MudTd>
+                            <MudTd Title="Current month balance">@balances[i].Current.ToString("C")</MudTd>
+                            <MudTd Title="Total balance">@balances[i].Total.ToString("C")</MudTd>
+                        }
+                    </RowTemplate>
+                </MudTable>
+            </div>
+        </MudTabPanel>
+        <MudTabPanel Text="Repayments">
+            <MudTable Items="_repayments" Hover="true" Bordered="true" Striped="true" Dense="true">
+                <HeaderContent>
+                    <MudTh>Member</MudTh>
+                    <MudTh>Amount</MudTh>
+                    <MudTh>Date</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>@context.Member</MudTd>
+                    <MudTd>@context.Amount.ToString("C")</MudTd>
+                    <MudTd>@context.Date.ToShortDateString()</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudTabPanel>
+    </MudTabs>
+
+</MudContainer>

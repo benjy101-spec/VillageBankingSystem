@@ -1,0 +1,59 @@
+/* MainLayout.razor.css - Styles for the main layout using MudBlazor components */
+
+.mud-layout {
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mud-appbar {
+  background-color: #1abc9c !important;
+  color: white !important;
+  box-shadow: 0 2px 4px rgba(26, 188, 156, 0.4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mud-appbar .mud-icon-button {
+  color: white !important;
+}
+
+.mud-appbar .mud-text {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.mud-drawer {
+  background-color: #2c3e50 !important;
+  color: #ecf0f1 !important;
+  border-right: 1px solid #34495e;
+  transition: width 0.3s ease;
+}
+
+.mud-drawer .mud-nav-link {
+  color: #ecf0f1 !important;
+}
+
+.mud-drawer .mud-nav-link.mud-nav-link-active {
+  background-color: #16a085 !important;
+  font-weight: 600;
+}
+
+.mud-main-content {
+  padding: 20px;
+  background-color: #f5f7fa;
+  flex-grow: 1;
+  overflow-y: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mud-drawer {
+    width: 200px !important;
+  }
+  .mud-main-content {
+    padding: 12px 10px;
+  }
+}

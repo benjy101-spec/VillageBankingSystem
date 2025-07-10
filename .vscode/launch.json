@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Blazor WebAssembly",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:5000",
+      "webRoot": "${workspaceFolder}/VillageBankingSystem.UI/wwwroot",
+      "preLaunchTask": "run Blazor WebAssembly"
+    }
+  ]
+}

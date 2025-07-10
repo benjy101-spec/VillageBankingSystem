@@ -1,0 +1,131 @@
+@page "/"
+@using MudBlazor
+@using MudBlazor.Components
+@inject NavigationManager Navigation
+
+<div class="hero-background">
+  <MudPaper Class="pa-6 mb-6" Elevation="4" Style="background: linear-gradient(135deg, #1f5c79 0%, #1f5c79 100%); color: white; position: relative; z-index: 1;">
+    <MudGrid AlignItems="Center" Justify="Justify.SpaceBetween">
+      <MudItem xs="12" sm="8">
+        <MudText Typo="Typo.h4" GutterBottom="true" Bold="true">
+          Welcome to Village Banking System
+        </MudText>
+        <MudText Typo="Typo.subtitle1" Class="mb-4">
+          Empowering communities through collaborative financial solutions.
+        </MudText>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => Navigation.NavigateTo("/dashboard"))" StartIcon="@Icons.Material.Filled.PlayArrow">
+          Get Started
+        </MudButton>
+      </MudItem>
+      <MudItem xs="12" sm="4" Class="d-flex justify-space-between justify-end">
+        <MudIcon Icon="@Icons.Material.Filled.AccountBalance" Size="Size.Large" />
+      </MudItem>
+    </MudGrid>
+  </MudPaper>
+  <div class="animated-waves"></div>
+</div>
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-6">
+  <MudGrid Spacing="3" Justify="Justify.Center">
+    <MudItem xs="12" sm="6" md="3">
+      <MudPaper Class="pa-4 feature-card d-flex flex-column align-items-center" Elevation="6">
+        <MudIcon Icon="@Icons.Material.Filled.Security" Color="Color.Primary" Size="Size.Large" Class="mb-2" />
+        <MudText Typo="Typo.h6" Class="mb-1">Secure Savings</MudText>
+        <MudText Typo="Typo.body2" Align="Align.Center">
+          Keep your savings safe with our trusted system.
+        </MudText>
+      </MudPaper>
+    </MudItem>
+    <MudItem xs="12" sm="6" md="3">
+      <MudPaper Class="pa-4 feature-card d-flex flex-column align-items-center" Elevation="6">
+        <MudIcon Icon="@Icons.Material.Filled.AttachMoney" Color="Color.Success" Size="Size.Large" Class="mb-2" />
+        <MudText Typo="Typo.h6" Class="mb-1">Easy Loans</MudText>
+        <MudText Typo="Typo.body2" Align="Align.Center">
+          Quick and simple loan application process.
+        </MudText>
+      </MudPaper>
+    </MudItem>
+    <MudItem xs="12" sm="6" md="3">
+      <MudPaper Class="pa-4 feature-card d-flex flex-column align-items-center" Elevation="6">
+        <MudIcon Icon="@Icons.Material.Filled.Assessment" Color="Color.Info" Size="Size.Large" Class="mb-2" />
+        <MudText Typo="Typo.h6" Class="mb-1">Community Reports</MudText>
+        <MudText Typo="Typo.body2" Align="Align.Center">
+          Transparent and detailed financial reports.
+        </MudText>
+      </MudPaper>
+    </MudItem>
+    <MudItem xs="12" sm="6" md="3">
+      <MudPaper Class="pa-4 feature-card d-flex flex-column align-items-center" Elevation="6">
+        <MudIcon Icon="@Icons.Material.Filled.Group" Color="Color.Warning" Size="Size.Large" Class="mb-2" />
+        <MudText Typo="Typo.h6" Class="mb-1">Member Management</MudText>
+        <MudText Typo="Typo.body2" Align="Align.Center">
+          Efficient tools to manage your community members.
+        </MudText>
+      </MudPaper>
+    </MudItem>
+  </MudGrid>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-6 d-flex justify-center">
+  <MudAvatarGroup Max="5" Size="Size.Large">
+    <MudAvatar Alt="Member 1" Src="https://randomuser.me/api/portraits/men/1.jpg" />
+    <MudAvatar Alt="Member 2" Src="https://randomuser.me/api/portraits/women/2.jpg" />
+    <MudAvatar Alt="Member 3" Src="https://randomuser.me/api/portraits/men/3.jpg" />
+    <MudAvatar Alt="Member 4" Src="https://randomuser.me/api/portraits/women/4.jpg" />
+    <MudAvatar Alt="Member 5" Src="https://randomuser.me/api/portraits/men/5.jpg" />
+  </MudAvatarGroup>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="footer">
+  <MudText Typo="Typo.caption" Align="Align.Center">
+    &copy; 2025 Village Banking System. All rights reserved. | Contact: benjaminmilanzi17@gmail.com
+  </MudText>
+</MudContainer>
+
+<style>
+  .hero-background {
+    position: relative;
+    overflow: hidden;
+  }
+  .animated-waves {
+    position: absolute;
+    width: 100vw;
+    height: 150px;
+    bottom: 0;
+    left: 0;
+    background: url('data:image/svg+xml;utf8,<svg width="1920" height="150" xmlns="http://www.w3.org/2000/svg"><path fill="%231f5c79" fill-opacity="0.4" d="M0 67 C 273,183 822,-40 1920,106 L1920 150 L0 150 Z"></path></svg>') repeat-x;
+    animation: wave-animation 10s linear infinite;
+  }
+  .wave-animation {
+    0% { background-position-x: 0; }
+    100% { background-position-x: 1000px; }
+  }
+  .feature-card {
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+  }
+  .footer {
+    margin-top: 48px;
+    padding: 24px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    position: relative;
+  }
+  .footer::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    bottom: 0;
+    left: 0;
+    background: url('data:image/svg+xml;utf8,<svg width="100%" height="150" xmlns="http://www.w3.org/2000/svg"><path fill="%231f5c79" fill-opacity="0.4" d="M0 67 C 273,183 822,-40 1920,106 L1920 150 L0 150 Z"></path></svg>') repeat-x;
+    animation: wave-animation 10s linear infinite;
+    z-index: 0;
+  }
+</style>

@@ -1,0 +1,9 @@
+.custom-large-dialog .mud-dialog-container {
+    width: 1000px !important;
+    max-width: 95vw !important;
+    height: 700px !important;
+    max-height: 95vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+

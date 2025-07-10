@@ -1,0 +1,49 @@
+@page "/savings"
+@using MudBlazor
+@using MudBlazor.Components
+
+<MudPaper Class="pa-6" Elevation="12" Style="border-radius: 16px; background-color: #f9f9f9;">
+    <MudText Typo="Typo.h4" GutterBottom="true" Style="color: #1f5c79;" Class="mb-4">Savings Management</MudText>
+
+    <MudTable Items="_members" Hover="true" Bordered="true" Striped="true" Dense="true" Class="shadow-sm" Style="border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+        <HeaderContent>
+            <MudTh style="background-color: #1976d2; color: white;">Member</MudTh>
+            @foreach (var month in _months)
+            {
+                <MudTh style="background-color: #1976d2; color: white;">@month</MudTh>
+            }
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd style="vertical-align: middle;">@context.Name</MudTd>
+            @foreach (var month in _months)
+            {
+                <MudTd style="vertical-align: middle;">
+                    <MudNumericField Value="context.MonthlySavings.FirstOrDefault(ms => ms.Month == month)?.Amount ?? 0m"
+                                     ValueChanged="@CreateValueChangedCallback(context, month)"
+                                     Immediate="true"
+                                     Min="0"
+                                     Style="width: 100px;"
+                                     Adornment="Adornment.End"
+                                     AdornmentText="ZMW" />
+                </MudTd>
+            }
+        </RowTemplate>
+    </MudTable>
+
+    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveSavings" Class="mt-4" StartIcon="@Icons.Material.Filled.Save" Style="min-width: 150px;">
+        Save Changes
+    </MudButton>
+</MudPaper>
+
+
+<style>
+    /* Hide number input spinners */
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
