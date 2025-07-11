@@ -2,6 +2,30 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* Button color customization */
+button, .mud-button-root {
+  color: white !important;
+  border: none !important;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .mud-button-root:hover {
+  background-color: #194a61 !important;
+  color: white !important;
+  cursor: pointer;
+}
+
+/* Navigation drawer page name hover and active styles */
+.mud-nav-link:hover, .mud-nav-link.mud-nav-link-active {
+  color: #1f5c79 !important;
+}
+
+/* Ensure focus styles are visible */
+button:focus, .mud-button-root:focus {
+  outline: 2px solid #194a61 !important;
+  outline-offset: 2px;
+}
+
 h1:focus {
     outline: none;
 }

@@ -9,3 +9,4 @@ C:\Users\B3N7Y\OneDrive\Desktop\VillageBankingSystem\VillageBankingSystem.Shared
 C:\Users\B3N7Y\OneDrive\Desktop\VillageBankingSystem\VillageBankingSystem.Shared\obj\Debug\net9.0\refint\VillageBankingSystem.Shared.dll
 C:\Users\B3N7Y\OneDrive\Desktop\VillageBankingSystem\VillageBankingSystem.Shared\obj\Debug\net9.0\VillageBankingSystem.Shared.pdb
 C:\Users\B3N7Y\OneDrive\Desktop\VillageBankingSystem\VillageBankingSystem.Shared\obj\Debug\net9.0\ref\VillageBankingSystem.Shared.dll
+C:\Users\B3N7Y\OneDrive\Desktop\VillageBankingSystem\VillageBankingSystem.Shared\obj\Debug\net9.0\VillageBankingSystem.Shared.sourcelink.json

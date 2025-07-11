@@ -30,15 +30,25 @@ namespace VillageBankingSystem.UI.Pages
             if (DashboardService != null)
             {
                 // Existing financial overview data
-                _labels = DashboardService.GetLabels();
+                _labels = DashboardService.GetLabels() ?? new string[] { "No Data" };
                 var datasets = DashboardService.GetDatasets();
-                foreach (var dataset in datasets)
+                if (datasets == null || datasets.Count == 0)
                 {
-                _chartSeries.Add(new ChartSeries
+                    _chartSeries = new List<ChartSeries>
+                    {
+                        new ChartSeries { Name = "No Data", Data = new double[] { 0 } }
+                    };
+                }
+                else
                 {
-                    Name = dataset.Name,
-                    Data = dataset.Data
-                });
+                    foreach (var dataset in datasets)
+                    {
+                        _chartSeries.Add(new ChartSeries
+                        {
+                            Name = dataset.Name,
+                            Data = dataset.Data
+                        });
+                    }
                 }
 
                 // New: Fetch summary metrics
@@ -47,22 +57,42 @@ namespace VillageBankingSystem.UI.Pages
                 TotalSavings = DashboardService.GetTotalSavings();
 
                 // New: Loan distribution data
-                _loanDistributionLabels = DashboardService.GetLoanDistributionLabels();
+                _loanDistributionLabels = DashboardService.GetLoanDistributionLabels() ?? new string[] { "No Data" };
                 var loanDistData = DashboardService.GetLoanDistributionData();
-                _loanDistributionSeries.Add(new ChartSeries
+                if (loanDistData == null || loanDistData.Length == 0)
                 {
-                    Name = "Loan Distribution",
-                    Data = loanDistData
-                });
+                    _loanDistributionSeries = new List<ChartSeries>
+                    {
+                        new ChartSeries { Name = "No Data", Data = new double[] { 0 } }
+                    };
+                }
+                else
+                {
+                    _loanDistributionSeries.Add(new ChartSeries
+                    {
+                        Name = "Loan Distribution",
+                        Data = loanDistData
+                    });
+                }
 
                 // New: Monthly repayment data
-                _monthlyRepaymentLabels = DashboardService.GetMonthlyRepaymentLabels();
+                _monthlyRepaymentLabels = DashboardService.GetMonthlyRepaymentLabels() ?? new string[] { "No Data" };
                 var monthlyRepaymentData = DashboardService.GetMonthlyRepaymentData();
-                _monthlyRepaymentSeries.Add(new ChartSeries
+                if (monthlyRepaymentData == null || monthlyRepaymentData.Length == 0)
                 {
-                    Name = "Monthly Repayments",
-                    Data = monthlyRepaymentData
-                });
+                    _monthlyRepaymentSeries = new List<ChartSeries>
+                    {
+                        new ChartSeries { Name = "No Data", Data = new double[] { 0 } }
+                    };
+                }
+                else
+                {
+                    _monthlyRepaymentSeries.Add(new ChartSeries
+                    {
+                        Name = "Monthly Repayments",
+                        Data = monthlyRepaymentData
+                    });
+                }
             }
         }
     }

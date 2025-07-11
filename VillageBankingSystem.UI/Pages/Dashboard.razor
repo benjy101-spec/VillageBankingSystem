@@ -7,31 +7,31 @@
 
     <MudGrid Class="mb-4" Style="gap: 16px; max-width: 1200px; margin-left: auto; margin-right: auto;" Justify="Justify.Center">
         <MudItem xs="14" sm="4" md="3" lg="3" xl="3">
-            <MudPaper Class="pa-3 d-flex flex-column align-items-center" Elevation="8" Style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; min-height: 140px;">
-                <MudIcon Icon="@Icons.Material.Filled.Group" Color="Color.Primary" Size="Size.Medium" Class="mb-1" />
-                <MudText Typo="Typo.subtitle1" Class="mb-1" Style="color: #3196c5; text-align: center; max-width: 300px;">Total Members</MudText>
-                <MudText Typo="Typo.h5" Style="color: #3196c5; text-align: center; max-width: 300px;">@TotalMembers</MudText>
+            <MudPaper Class="pa-3 d-flex flex-column align-items-center" Elevation="12" Style="background: linear-gradient(135deg, #42a5f5 0%, #478ed1 100%); border-radius: 16px; min-height: 140px; box-shadow: 0 4px 20px rgba(66, 165, 245, 0.6);">
+                <MudIcon Icon="@Icons.Material.Filled.Group" Color="Color.Primary" Size="Size.Large" Class="mb-2" />
+                <MudText Typo="Typo.subtitle1" Class="mb-2" Style="color: white; text-align: center; max-width: 300px;">Total Members</MudText>
+                <MudText Typo="Typo.h4" Style="color: white; text-align: center; max-width: 300px;">@TotalMembers</MudText>
             </MudPaper>
         </MudItem>
         <MudItem xs="14" sm="4" md="3" lg="3" xl="3">
-            <MudPaper Class="pa-3 d-flex flex-column align-items-center" Elevation="8" Style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 12px; min-height: 140px;">
-                <MudIcon Icon="@Icons.Material.Filled.Savings" Size="Size.Medium" Class="mb-1" Style="color: #3196c5;" />
-                <MudText Typo="Typo.subtitle1" Class="mb-1" Style="color: #3196c5; text-align: center; max-width: 300px;">Total Savings</MudText>
-                <MudText Typo="Typo.h5" Style="color: #3196c5; text-align: center; max-width: 300px;">@TotalSavings</MudText>
+            <MudPaper Class="pa-3 d-flex flex-column align-items-center" Elevation="12" Style="background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%); border-radius: 16px; min-height: 140px; box-shadow: 0 4px 20px rgba(102, 187, 106, 0.6);">
+                <MudIcon Icon="@Icons.Material.Filled.Savings" Size="Size.Large" Class="mb-2" Style="color: white;" />
+                <MudText Typo="Typo.subtitle1" Class="mb-2" Style="color: white; text-align: center; max-width: 300px;">Total Savings</MudText>
+                <MudText Typo="Typo.h4" Style="color: white; text-align: center; max-width: 300px;">@TotalSavings</MudText>
             </MudPaper>
         </MudItem>
         <MudItem xs="14" sm="4" md="3" lg="3" xl="3">
-            <MudPaper Class="pa-3 d-flex flex-column align-items-center" Elevation="8" Style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 12px; min-height: 140px;">
-                <MudIcon Icon="@Icons.Material.Filled.Money" Size="Size.Medium" Class="mb-1" Style="color: #3196c5;" />
-                <MudText Typo="Typo.subtitle1" Class="mb-1" Style="color: #3196c5; text-align: center; max-width: 300px;">Total Loans</MudText>
-                <MudText Typo="Typo.h5" Style="color: #3196c5; text-align: center; max-width: 300px;">@TotalLoans</MudText>
+            <MudPaper Class="pa-3 d-flex flex-column align-items-center" Elevation="12" Style="background: linear-gradient(135deg, #ffb74d 0%, #ffa726 100%); border-radius: 16px; min-height: 140px; box-shadow: 0 4px 20px rgba(255, 183, 77, 0.6);">
+                <MudIcon Icon="@Icons.Material.Filled.Money" Size="Size.Large" Class="mb-2" Style="color: white;" />
+                <MudText Typo="Typo.subtitle1" Class="mb-2" Style="color: white; text-align: center; max-width: 300px;">Total Loans</MudText>
+                <MudText Typo="Typo.h4" Style="color: white; text-align: center; max-width: 300px;">@TotalLoans</MudText>
             </MudPaper>
         </MudItem>
     </MudGrid>
 
     <MudCard Class="mt-4" Style="border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.15);">
         <MudCardHeader>
-            <MudText Typo="Typo.h6" Color="Color.Primary">Financial Overview</MudText>
+            <MudText Typo="Typo.h6"  Style="color: #1f5c79;">Financial Overview</MudText>
         </MudCardHeader>
         <MudCardContent>
             <MudChart ChartType="ChartType.Line"
@@ -45,7 +45,7 @@
         <MudItem xs="12" sm="6">
             <MudCard Style="border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.15);">
                 <MudCardHeader>
-                    <MudText Typo="Typo.h6" Color="Color.Primary">Loan Distribution</MudText>
+                    <MudText Typo="Typo.h6"  Style="color: #1f5c79;">Loan Distribution</MudText>
                 </MudCardHeader>
                 <MudCardContent>
                     <MudChart ChartType="ChartType.Pie"
@@ -58,7 +58,7 @@
         <MudItem xs="12" sm="6">
             <MudCard Style="border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.15);">
                 <MudCardHeader>
-                    <MudText Typo="Typo.h6" Color="Color.Primary">Monthly Repayments</MudText>
+                    <MudText Typo="Typo.h6"  Style="color: #1f5c79;">Monthly Repayments</MudText>
                 </MudCardHeader>
                 <MudCardContent>
                     <MudChart ChartType="ChartType.Bar"
