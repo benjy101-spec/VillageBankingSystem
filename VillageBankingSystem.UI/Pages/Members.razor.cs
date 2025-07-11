@@ -3,6 +3,8 @@ using MudBlazor;
 using System.Collections.Generic;
 using VillageBankingSystem.Shared.Models;
 using VillageBankingSystem.UI.Services.Interfaces;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace VillageBankingSystem.UI.Pages
 {
@@ -32,9 +34,17 @@ namespace VillageBankingSystem.UI.Pages
 
         private void AddNewMember()
         {
+            if (_editingMember != null && (string.IsNullOrWhiteSpace(_editingMember.Name) || string.IsNullOrWhiteSpace(_editingMember.Email)))
+            {
+                Snackbar.Add("Please fill in and save the current member before adding a new one.", Severity.Warning);
+                return;
+            }
+
             var newMember = new Member { Name = "", Email = "", Phone = "" };
             _members.Insert(0, newMember);
             _editingMember = newMember;
+
+            // Ensure placeholders are set for new member fields (handled in UI MudTextField Placeholder attributes)
         }
 
         private void EditMember(Member member)
@@ -47,11 +57,44 @@ namespace VillageBankingSystem.UI.Pages
             };
         }
 
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool IsValidPhone(string phone)
+        {
+            if (string.IsNullOrWhiteSpace(phone))
+                return false;
+            var digits = Regex.Replace(phone, @"\D", "");
+            return digits.Length >= 10;
+        }
+
         private void SaveMember(Member member)
         {
             if (string.IsNullOrWhiteSpace(_editingMember?.Name) || string.IsNullOrWhiteSpace(_editingMember?.Email))
             {
                 Snackbar.Add("Name and Email are required.", Severity.Error);
+                return;
+            }
+
+            if (!IsValidEmail(_editingMember.Email))
+            {
+                Snackbar.Add("Please enter a valid email address.", Severity.Error);
+                return;
+            }
+
+            if (!IsValidPhone(_editingMember.Phone))
+            {
+                Snackbar.Add("Please enter a valid phone number with at least 10 digits.", Severity.Error);
                 return;
             }
 

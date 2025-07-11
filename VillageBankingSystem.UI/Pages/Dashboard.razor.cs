@@ -25,75 +25,76 @@ namespace VillageBankingSystem.UI.Pages
         [Inject]
         public IDashboardService? DashboardService { get; set; }
 
-        protected override void OnInitialized()
+protected override void OnInitialized()
+{
+    if (DashboardService != null)
+    {
+        // Existing financial overview data
+        _labels = DashboardService.GetLabels() ?? new string[] { "Jan", "Feb", "Mar", "Apr", "May" };
+        var datasets = DashboardService.GetDatasets();
+        if (datasets == null || datasets.Count == 0)
         {
-            if (DashboardService != null)
+            _chartSeries = new List<ChartSeries>
             {
-                // Existing financial overview data
-                _labels = DashboardService.GetLabels() ?? new string[] { "No Data" };
-                var datasets = DashboardService.GetDatasets();
-                if (datasets == null || datasets.Count == 0)
+                new ChartSeries { Name = "Savings", Data = new double[] { 1000, 1200, 1500, 1300, 1600 } },
+                new ChartSeries { Name = "Loans", Data = new double[] { 800, 900, 1100, 1050, 1150 } }
+            };
+        }
+        else
+        {
+            foreach (var dataset in datasets)
+            {
+                _chartSeries.Add(new ChartSeries
                 {
-                    _chartSeries = new List<ChartSeries>
-                    {
-                        new ChartSeries { Name = "No Data", Data = new double[] { 0 } }
-                    };
-                }
-                else
-                {
-                    foreach (var dataset in datasets)
-                    {
-                        _chartSeries.Add(new ChartSeries
-                        {
-                            Name = dataset.Name,
-                            Data = dataset.Data
-                        });
-                    }
-                }
-
-                // New: Fetch summary metrics
-                TotalMembers = DashboardService.GetTotalMembers();
-                TotalLoans = DashboardService.GetTotalLoans();
-                TotalSavings = DashboardService.GetTotalSavings();
-
-                // New: Loan distribution data
-                _loanDistributionLabels = DashboardService.GetLoanDistributionLabels() ?? new string[] { "No Data" };
-                var loanDistData = DashboardService.GetLoanDistributionData();
-                if (loanDistData == null || loanDistData.Length == 0)
-                {
-                    _loanDistributionSeries = new List<ChartSeries>
-                    {
-                        new ChartSeries { Name = "No Data", Data = new double[] { 0 } }
-                    };
-                }
-                else
-                {
-                    _loanDistributionSeries.Add(new ChartSeries
-                    {
-                        Name = "Loan Distribution",
-                        Data = loanDistData
-                    });
-                }
-
-                // New: Monthly repayment data
-                _monthlyRepaymentLabels = DashboardService.GetMonthlyRepaymentLabels() ?? new string[] { "No Data" };
-                var monthlyRepaymentData = DashboardService.GetMonthlyRepaymentData();
-                if (monthlyRepaymentData == null || monthlyRepaymentData.Length == 0)
-                {
-                    _monthlyRepaymentSeries = new List<ChartSeries>
-                    {
-                        new ChartSeries { Name = "No Data", Data = new double[] { 0 } }
-                    };
-                }
-                else
-                {
-                    _monthlyRepaymentSeries.Add(new ChartSeries
-                    {
-                        Name = "Monthly Repayments",
-                        Data = monthlyRepaymentData
-                    });
-                }
+                    Name = dataset.Name,
+                    Data = dataset.Data
+                });
             }
         }
+
+        // New: Fetch summary metrics
+        TotalMembers = DashboardService.GetTotalMembers();
+        TotalLoans = DashboardService.GetTotalLoans();
+        TotalSavings = DashboardService.GetTotalSavings();
+
+        // New: Loan distribution data
+        _loanDistributionLabels = DashboardService.GetLoanDistributionLabels() ?? new string[] { "Personal", "Business", "Education" };
+        var loanDistData = DashboardService.GetLoanDistributionData();
+        if (loanDistData == null || loanDistData.Length == 0)
+        {
+            _loanDistributionSeries = new List<ChartSeries>
+            {
+                new ChartSeries { Name = "Loan Distribution", Data = new double[] { 40, 35, 25 } }
+            };
+        }
+        else
+        {
+            _loanDistributionSeries.Add(new ChartSeries
+            {
+                Name = "Loan Distribution",
+                Data = loanDistData
+            });
+        }
+
+        // New: Monthly repayment data
+        _monthlyRepaymentLabels = DashboardService.GetMonthlyRepaymentLabels() ?? new string[] { "Jan", "Feb", "Mar", "Apr", "May" };
+        var monthlyRepaymentData = DashboardService.GetMonthlyRepaymentData();
+        if (monthlyRepaymentData == null || monthlyRepaymentData.Length == 0)
+        {
+            _monthlyRepaymentSeries = new List<ChartSeries>
+            {
+                new ChartSeries { Name = "Monthly Repayments", Data = new double[] { 500, 600, 700, 650, 720 } }
+            };
+        }
+        else
+        {
+            _monthlyRepaymentSeries.Add(new ChartSeries
+            {
+                Name = "Monthly Repayments",
+                Data = monthlyRepaymentData
+            });
+        }
+    }
+}
     }
 }

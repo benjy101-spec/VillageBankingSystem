@@ -1,0 +1,144 @@
+@page "/mudpie"
+@using MudBlazor
+@using MudBlazor.Charts
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+</style>
+
+<MudText Typo="Typo.h6">Loan Distribution in the Village Banking System</MudText>
+<MudText Typo="Typo.body2">* Distribution of loans by type in thousands.</MudText>
+<br /><br />
+
+<div>
+<MudGrid>
+    <MudItem xs="12" sm="6">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">
+            <MudChart ChartType="ChartType.Pie" InputData="@data2022" @bind-SelectedIndex="Index" LegendPosition="@LegendPosicion" InputLabels="@labels" Width="100%" Height="350px" >
+            </MudChart>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="12" sm="6">
+        <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">
+            <MudChart ChartType="ChartType.Donut" InputData="@data2022" @bind-SelectedIndex="Index" LegendPosition="@LegendPosicion" InputLabels="@labels" Width="100%" Height="350px" >
+                <CustomGraphics>
+                    <text class="donut-inner-text" x="50%" y="42%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="3">Year</text>
+                    <text class="donut-inner-text" x="50%" y="53%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="3">2022</text>
+                </CustomGraphics>
+            </MudChart>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+<br /><br />
+    @switch (Index)
+    {
+        case 0:
+            <table>
+                <tr>    
+                    <th>Loan Type</th>
+                    <th>2019 *</th>
+                    <th>2020 *</th>
+                    <th>2022 *</th>
+                </tr>
+                <tr>    
+                    <td>@labels[0].ToString()</td>
+                    <td>@data2019[0].ToString()</td>
+                    <td>@data2020[0].ToString()</td>
+                    <td>@data2022[0].ToString()</td>
+                </tr>
+            </table>
+            break;
+        case 1:
+            <table>
+                <tr>    
+                    <th>Loan Type</th>
+                    <th>2019 *</th>
+                    <th>2020 *</th>
+                    <th>2022 *</th>
+                </tr>
+                <tr>    
+                    <td>@labels[1].ToString()</td>
+                    <td>@data2019[1].ToString()</td>
+                    <td>@data2020[1].ToString()</td>
+                    <td>@data2022[1].ToString()</td>
+                </tr>
+            </table>
+            break;
+        case 2:
+            <table>        
+                <tr>    
+                    <th>Loan Type</th>
+                    <th>2019 *</th>
+                    <th>2020 *</th>
+                    <th>2022 *</th>
+                </tr>
+                <tr>    
+                    <td>@labels[2].ToString()</td>
+                    <td>@data2019[2].ToString()</td>
+                    <td>@data2020[2].ToString()</td>
+                    <td>@data2022[2].ToString()</td>
+                </tr>
+            </table>
+            break;
+        case 3:
+            <table> 
+                <tr>    
+                    <th>Loan Type</th>
+                    <th>2019 *</th>
+                    <th>2020 *</th>
+                    <th>2022 *</th>
+                </tr>
+                <tr>    
+                    <td>@labels[3].ToString()</td>
+                    <td>@data2019[3].ToString()</td>
+                    <td>@data2020[3].ToString()</td>
+                    <td>@data2022[3].ToString()</td>
+                </tr>
+            </table>
+            break;
+        case 4:
+            <table> 
+                <tr>    
+                    <th>Loan Type</th>
+                    <th>2019 *</th>
+                    <th>2020 *</th>
+                    <th>2022 *</th>
+                </tr>
+                <tr>    
+                    <td>@labels[4].ToString()</td>
+                    <td>@data2019[4].ToString()</td>
+                    <td>@data2020[4].ToString()</td>
+                    <td>@data2022[4].ToString()</td>
+                </tr>
+            </table>
+            break;
+    }
+
+</div>
+
+@code {
+    private int Index = -1;
+
+    public Position LegendPosicion { get; set; } = Position.Start;
+
+    public double[] data2019 = { 120, 80, 60, 40, 30 };
+    public double[] data2020 = { 130, 85, 65, 45, 35 };
+    public double[] data2022 = { 150, 90, 70, 50, 40 };
+
+    public string[] labels = { "Personal", "Business", "Education", "Agriculture", "Housing" };
+}

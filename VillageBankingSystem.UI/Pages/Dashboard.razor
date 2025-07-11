@@ -1,5 +1,6 @@
 @page "/dashboard"
 @using MudBlazor
+@using MudBlazor.Charts
 @using Microsoft.AspNetCore.Components
 
 <MudPaper Class="pa-6" Elevation="8" Style="border-radius: 12px; max-width: 1200px; margin-left: auto; margin-right: auto;">
@@ -51,7 +52,7 @@
                     <MudChart ChartType="ChartType.Pie"
                               series="_loanDistributionSeries"
                               labels="_loanDistributionLabels"
-                              Height="300" />
+                              Height="400" />
                 </MudCardContent>
             </MudCard>
         </MudItem>
@@ -64,7 +65,7 @@
                     <MudChart ChartType="ChartType.Bar"
                               series="_monthlyRepaymentSeries"
                               labels="_monthlyRepaymentLabels"
-                              Height="300" />
+                              Height="400" />
                 </MudCardContent>
             </MudCard>
         </MudItem>

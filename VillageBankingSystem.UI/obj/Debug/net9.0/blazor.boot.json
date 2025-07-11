@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "VillageBankingSystem.UI",
   "resources": {
-    "hash": "sha256-q4d0vny6T+0WHOlqgjiDlpXcv+v+svygQlFi/7n2e68=",
+    "hash": "sha256-+Uk95Hk/TIfIm2nQrmfDs4VNwfCVGLvzg6L8xP8bHbQ=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Authorization.phaa9r44xv.wasm": "Microsoft.AspNetCore.Authorization.wasm",
       "Microsoft.AspNetCore.Components.4o2vz6uw5j.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -215,10 +215,10 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "VillageBankingSystem.Shared.pjohd5wrsa.wasm": "VillageBankingSystem.Shared.wasm",
-      "VillageBankingSystem.Shared.ax708x967d.pdb": "VillageBankingSystem.Shared.pdb",
-      "VillageBankingSystem.UI.vvpisyefhh.wasm": "VillageBankingSystem.UI.wasm",
-      "VillageBankingSystem.UI.d7zobja3x6.pdb": "VillageBankingSystem.UI.pdb"
+      "VillageBankingSystem.Shared.6oin1uedmm.wasm": "VillageBankingSystem.Shared.wasm",
+      "VillageBankingSystem.Shared.v8d6s78ec3.pdb": "VillageBankingSystem.Shared.pdb",
+      "VillageBankingSystem.UI.blejsn5af5.wasm": "VillageBankingSystem.UI.wasm",
+      "VillageBankingSystem.UI.kwrz7lcuby.pdb": "VillageBankingSystem.UI.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.st0ovrfdhi.js": "sha256-MBW/zayfv+YU6mhH7y4b8NNU4D1EYd7nf9gYrFshnnY="
@@ -442,12 +442,12 @@
       "WindowsBase.pg3o6xzigg.wasm": "sha256-dz62CHynC+zqTkbMOf3vm7YAhiRA8/pIoAwuqHfBL5M=",
       "mscorlib.jl2pswegra.wasm": "sha256-mSoCIDTdCQKTipW8VmFCypW/4AopZauaYRa8LoZdHvY=",
       "netstandard.uriri6ambh.wasm": "sha256-yuH/cvPd6r8N9nfPWihyckFD7hPFP+VQtQQxEqi7HIQ=",
-      "VillageBankingSystem.Shared.pjohd5wrsa.wasm": "sha256-e0gKMh+88eX9jYmaqwl9VLbLdVt9Cc+GJ4DFdLTRDXM=",
-      "VillageBankingSystem.UI.vvpisyefhh.wasm": "sha256-dah9i/zJYJPPq3caOvJWGw5aWfSr08Fzs4nnISxAJ9Y="
+      "VillageBankingSystem.Shared.6oin1uedmm.wasm": "sha256-RrcTgc/3ONV8HvMCAD9EMRVyd2jgs6Oqhv6Ef88Y368=",
+      "VillageBankingSystem.UI.blejsn5af5.wasm": "sha256-n/gMIwi/ASIuE0EuS5CxVGmZIa3ghJS3vZ9IIa7tlH8="
     },
     "pdb": {
-      "VillageBankingSystem.Shared.ax708x967d.pdb": "sha256-HmS0L9MsbHI0oR3i2B+wOvF9YjxYwGyewRgVF9fqKJQ=",
-      "VillageBankingSystem.UI.d7zobja3x6.pdb": "sha256-x8AvSCWrqInew95nEhSu07zI6Z3Xa/RSf6lQq2l3c3s="
+      "VillageBankingSystem.Shared.v8d6s78ec3.pdb": "sha256-cV8rxkBWY3mT5I7s5p8zroxHlM3ek0lurStpYr9uaec=",
+      "VillageBankingSystem.UI.kwrz7lcuby.pdb": "sha256-/GwQXJv2DTGajh22NvhRIx1LsJYVweEk6Iq0iQ0Mtgc="
     }
   },
   "cacheBootResources": true,
